@@ -9,6 +9,7 @@
   <% @products.each do |product| %>
     <div class="p-4 bg-white rounded shadow flex justify-between items-center">
       <div>
+        <p class="text-sm text-gray-500">Code: <%= product.product_code %></p>
         <p class="text-lg font-semibold"><%= product.name %></p>
         <p class="text-sm text-gray-600">$<%= number_with_precision(product.price, precision: 2) %></p>
       </div>

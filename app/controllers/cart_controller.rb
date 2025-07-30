@@ -1,7 +1,6 @@
-  class CartController < ApplicationController
+class CartController < ApplicationController
   def show
-    @cart = session[:cart] || {}
-    @products = Product.find(@cart.keys)
+    @cart_items = CartPricingService.new(session[:cart]).items
   end
 
   def add
