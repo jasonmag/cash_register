@@ -1,2 +1,18 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1 class="text-3xl font-bold mb-6">Products</h1>
+
+<div class="flex justify-between items-center mb-6">
+  <%= link_to "Add New Product", new_product_path, class: "text-blue-600 hover:underline font-medium" %>
+  <%= link_to "View Cart", cart_path, class: "text-blue-600 hover:underline font-medium" %>
+</div>
+
+<div class="space-y-4">
+  <% @products.each do |product| %>
+    <div class="p-4 bg-white rounded shadow flex justify-between items-center">
+      <div>
+        <p class="text-lg font-semibold"><%= product.name %></p>
+        <p class="text-sm text-gray-600">$<%= number_with_precision(product.price, precision: 2) %></p>
+      </div>
+      <%= button_to "Add to Cart", add_to_cart_path(product), method: :post, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+    </div>
+  <% end %>
+</div>
